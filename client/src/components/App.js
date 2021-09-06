@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+import Container from "@material-ui/core/Container";
+import Box from "@material-ui/core/Box";
 
-function Header() {
-  return <h2>Header</h2>;
-}
+import Header from "./Header";
 
 function Dashboard() {
   return <h2>Dashboard</h2>;
@@ -23,7 +23,7 @@ function Footer() {
 
 function App() {
   return (
-    <div>
+    <Container disableGutters={true}>
       <BrowserRouter>
         <div>
           <Header />
@@ -33,7 +33,7 @@ function App() {
           <Footer />
         </div>
       </BrowserRouter>
-    </div>
+    </Container>
   );
 }
 
