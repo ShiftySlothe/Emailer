@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, Provider } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
+import { fetchUser } from "../redux/actions";
+import { useDispatch } from "react-redux";
 
 import Header from "./Header";
+import Landing from "./Landing";
 
 function Dashboard() {
   return <h2>Dashboard</h2>;
@@ -13,15 +15,18 @@ function SurveyNew() {
   return <h2>SurveyNew</h2>;
 }
 
-function Landing() {
-  return <h2>Landing</h2>;
-}
-
 function Footer() {
   return <h2>Footer</h2>;
 }
 
-function App() {
+function App(props) {
+  const dispatch = useDispatch();
+  useEffect(
+    (props) => {
+      dispatch(fetchUser());
+    },
+    [dispatch]
+  );
   return (
     <Container disableGutters={true}>
       <BrowserRouter>

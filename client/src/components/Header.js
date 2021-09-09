@@ -1,12 +1,16 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-
+import {
+  makeStyles,
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+} from "@material-ui/core";
+import { Menu as MenuIcon } from "@material-ui/icons";
+import { connect } from "react-redux";
+import useAuthStatusOnPage from "../utils/useAuth";
+import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -19,8 +23,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header() {
+function Header(props) {
   const classes = useStyles();
+
+  const setLoginData = useAuthStatusOnPage(
+    props.auth,
+    null,
+    <a href="/api/logout">Logout</a>,
+    <a href="/auth/google">Login with Google</a>
+  );
 
   return (
     <div className={classes.root}>
@@ -34,12 +45,20 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
+
           <Typography variant="h6" className={classes.title}>
-            Emailer
+            <Link to={props.auth ? "/surveys" : "/"}>Emailer</Link>
           </Typography>
-          <Button color="inherit">Login with Google</Button>
+
+          <Button color="inherit">{setLoginData}</Button>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+
+export default connect(mapStateToProps)(Header);

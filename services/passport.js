@@ -28,7 +28,7 @@ passport.use(
     // Set up logic for when strategy is triggered
     async (accessToken, refreshToken, profile, done) => {
       // Check if user exists
-      const existningUser = await User.findOne({ googleID: profile.id });
+      const existingUser = await User.findOne({ googleID: profile.id });
       if (existingUser) {
         return done(null, existingUser);
       }
