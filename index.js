@@ -7,6 +7,8 @@ const keys = require("./config/keys");
 
 //Run scripts
 require("./models/user");
+require("./models/survey");
+
 require("./services/passport");
 
 const connectToDB = async () => {
