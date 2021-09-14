@@ -27,6 +27,7 @@ connectToDB();
 
 const app = express();
 
+app.use(express.json());
 // Initialize cookie session
 try {
   app.use(
@@ -58,7 +59,16 @@ try {
 
 // Assign routes
 require("./routes/authRoutes")(app);
+require("./routes/paymentRoutes")(app);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+
+  const path = requrie("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 // PORT set by PaaS or local host:5000
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

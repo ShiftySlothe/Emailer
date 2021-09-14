@@ -5,4 +5,8 @@ module.exports = {
   mongoURI:
     "mongodb+srv://ShiftyPlatypus:4hQbVRvjHkA8eJu6@emailer-dev.lt94r.mongodb.net/emailer-dev?retryWrites=true&w=majority",
   cookieKey: "abc123z",
+  stripePublishableKey:
+    "pk_test_51JZGesGlaaqlLSKmGmx9lXUTtpuJrkW7gLVWDoJj50GmAk5swvDVwk8r3BFeZlHrKCA90F4J0tEVuJ3VcGKACDOG00sji33buD",
+  stripeSecretKey:
+    "sk_test_51JZGesGlaaqlLSKm1wzoDEiaWEZjPk2z956S7J4aNiHQivD1GmcqgmeShBZ1jbxpluwKzoQdjINilwh40ZZBvQx400xyjSLmJ7",
 };

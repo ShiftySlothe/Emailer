@@ -1,6 +1,5 @@
-import React, { useEffect, Provider } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import Container from "@material-ui/core/Container";
 import { fetchUser } from "../redux/actions";
 import { useDispatch } from "react-redux";
 
@@ -28,17 +27,16 @@ function App(props) {
     [dispatch]
   );
   return (
-    <Container disableGutters={true}>
-      <BrowserRouter>
-        <div>
-          <Header />
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/surveys" component={Dashboard} />
-          <Route exact path="/surveys/new" component={SurveyNew} />
-          <Footer />
-        </div>
-      </BrowserRouter>
-    </Container>
+    <BrowserRouter>
+      <div>
+        <Header />
+
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/surveys" component={Dashboard} />
+        <Route exact path="/surveys/new" component={SurveyNew} />
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
