@@ -62,7 +62,7 @@ try {
 // Assign routes
 require("./routes/authRoutes")(app);
 require("./routes/paymentRoutes")(app);
-
+require("./routes/surveryRoutes")(app);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 
