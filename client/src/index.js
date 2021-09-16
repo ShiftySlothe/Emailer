@@ -5,6 +5,8 @@ import App from "./components/App";
 import reducers from "./redux/reducers";
 import reduxThunk from "redux-thunk";
 import { ChakraProvider } from "@chakra-ui/react";
+
+// TODO remove axios dev only
 import axios from "axios";
 window.axios = axios;
 

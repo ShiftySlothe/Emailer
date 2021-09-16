@@ -13,8 +13,6 @@ function Header(props) {
     <a href="/api/logout">Logout</a>,
     <a href="/auth/google">Login with Google</a>
   );
-
-  console.log(props.auth);
   const setPaymentData = useAuthStatusOnPage(
     props.auth,
     null,

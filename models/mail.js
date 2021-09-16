@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 const recipientSchema = require("./recipient");
 
 const mailSchema = new Schema({
-  responded: { type: Boolean, default: Boolean },
+  responded: { type: Boolean, default: false },
   recipient: recipientSchema,
 });
 

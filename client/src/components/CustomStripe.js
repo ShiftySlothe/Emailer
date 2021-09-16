@@ -56,8 +56,6 @@ export const CheckoutForm = () => {
       return;
     }
 
-    console.log("Creating intent");
-
     const { error: backendError, clientSecret } = await fetch(
       "/pay/create-payment-intent",
       {
@@ -73,12 +71,10 @@ export const CheckoutForm = () => {
     ).then((r) => r.json());
 
     if (backendError) {
-      console.log(backendError);
+      //TODO ADD ERROR HANDLING
       setIsLoading(false);
       return;
     }
-
-    console.log("Intent created");
 
     const { error: stripeError, paymentIntent } =
       await stripe.confirmCardPayment(clientSecret, {
@@ -87,15 +83,9 @@ export const CheckoutForm = () => {
         },
       });
     if (stripeError) {
-      console.log(stripeError);
       setIsLoading(false);
       return;
     }
-    console.log(
-      `Payment intent (${paymentIntent.id}): ${paymentIntent.status}`
-    );
-    console.log("Setting payment token to: ");
-    console.log(paymentIntent);
     setPaymentToken(paymentIntent);
     setIsLoading(false);
   };
