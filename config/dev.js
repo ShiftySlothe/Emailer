@@ -11,5 +11,5 @@ module.exports = {
     "sk_test_51JZGesGlaaqlLSKm1wzoDEiaWEZjPk2z956S7J4aNiHQivD1GmcqgmeShBZ1jbxpluwKzoQdjINilwh40ZZBvQx400xyjSLmJ7",
   sendGridKey:
     "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",
-  redirectDomain: "http:localhost3000/",
+  redirectDomain: "http://localhost:3000/",
 };

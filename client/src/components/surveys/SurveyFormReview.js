@@ -1,16 +1,15 @@
 import { Flex, Heading, Button, Text } from "@chakra-ui/react";
-import React from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { FIELDS } from "./SurveyForm";
-import * as actions from "../../redux/actions";
 import { withRouter } from "react-router";
+import { submitSurvey } from "../../redux/actions";
 
-function SurveyFormReview({
-  returnToSurvey,
-  formValues,
-  submitSurvey,
-  history,
-}) {
+function SurveyFormReview({ returnToSurvey, history }) {
+  const formValues = useSelector((state) => state.form.surveyForm.values);
+  const dispatch = useDispatch();
+  const dispatchForm = () => {
+    dispatch(submitSurvey(formValues, history));
+  };
   return (
     <Flex direction="column" alignItems="center">
       <Heading>Please review your submission.</Heading>
@@ -29,7 +28,7 @@ function SurveyFormReview({
         <Button
           m={2}
           onClick={() => {
-            submitSurvey(formValues, history);
+            dispatchForm();
           }}
         >
           Send survey
@@ -39,10 +38,4 @@ function SurveyFormReview({
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    formValues: state.form.surveyForm.values,
-  };
-}
-
-export default connect(mapStateToProps, actions)(withRouter(SurveyFormReview));
+export default withRouter(SurveyFormReview);

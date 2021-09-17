@@ -1,23 +1,24 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import useAuthStatusOnPage from "../utils/useAuth";
 import { Link } from "react-router-dom";
 import Payments from "./Payments";
 import { Flex, Heading } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/button";
 
-function Header(props) {
+function Header() {
+  const auth = useSelector((state) => state.auth);
   const setLoginData = useAuthStatusOnPage(
-    props.auth,
+    auth,
     null,
     <a href="/api/logout">Logout</a>,
     <a href="/auth/google">Login with Google</a>
   );
   const setPaymentData = useAuthStatusOnPage(
-    props.auth,
+    auth,
     null,
     <>
-      <Button>Credits: {props.auth ? props.auth.credits : null}</Button>
+      <Button>Credits: {auth ? auth.credits : null}</Button>
       <Payments />
     </>,
     null
@@ -35,7 +36,7 @@ function Header(props) {
       alignItems="center"
     >
       <Heading>
-        <Link to={props.auth ? "/surveys" : "/"}>Emailer</Link>
+        <Link to={auth ? "/surveys" : "/"}>Emailer</Link>
       </Heading>
       {setPaymentData ? setPaymentData : null}
 
@@ -46,8 +47,4 @@ function Header(props) {
   );
 }
 
-function mapStateToProps({ auth }) {
-  return { auth };
-}
-
-export default connect(mapStateToProps)(Header);
+export default Header;

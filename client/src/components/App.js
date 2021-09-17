@@ -13,14 +13,12 @@ function Footer() {
   return <h2>Footer</h2>;
 }
 
-function App(props) {
+function App() {
   const dispatch = useDispatch();
-  useEffect(
-    (props) => {
-      dispatch(fetchUser());
-    },
-    [dispatch]
-  );
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, [dispatch]);
+
   return (
     <BrowserRouter>
       <Box height="100vh">
