@@ -1,0 +1,36 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/emailer/node_modules
+/emailer/.pnp
+/emailer/.pnp.js
+
+# testing
+/emailer/coverage
+
+# next.js
+/emailer/.next/
+/emailer/out/
+
+# production
+/emailer/build
+
+# misc
+/emailer/.DS_Store
+/emailer/*.pem
+
+# debug
+/emailer/npm-debug.log*
+/emailer/yarn-debug.log*
+/emailer/yarn-error.log*
+
+# local env files
+/emailer/.env.local
+/emailer/.env.development.local
+/emailer/.env.test.local
+/emailer/.env.production.local
+
+# vercel
+/emailer/.vercel
+
+/temp
