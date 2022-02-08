@@ -82,8 +82,6 @@ module.exports = (app) => {
             lastResponded: new Date(),
           }
         );
-        console.log("_________MONGO QUERY___________");
-        console.log(testing);
         testing.exec();
       })
       .value();

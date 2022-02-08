@@ -4,7 +4,7 @@ import { Box } from "@chakra-ui/react";
 import { fetchUser } from "../redux/actions";
 import { useDispatch } from "react-redux";
 
-import Header from "./HeaderNew";
+import Header from "./Header";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
 import SurveyNew from "./surveys/SurveyNew";

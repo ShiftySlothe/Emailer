@@ -61,7 +61,7 @@ export default function Landing() {
               }}
               isLoading={!setLoginData}
             >
-              {setLoginData ? <ToDashboard auth={auth} /> : setLoginData}
+              {auth ? <ToDashboard auth={auth} /> : setLoginData}
             </Button>
             <Box>
               <Icon
