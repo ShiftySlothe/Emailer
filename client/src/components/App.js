@@ -20,7 +20,7 @@ function App() {
     <BrowserRouter>
       <Box height="100vh">
         <Header />
-        <Box mt="60px" height="100%">
+        <Box minH="100%">
           <Route exact path="/" component={Landing} />
           <Route exact path="/surveys" component={Dashboard} />
           <Route exact path="/surveys/new" component={SurveyNew} />

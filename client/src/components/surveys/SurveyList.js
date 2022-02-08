@@ -1,7 +1,8 @@
-import { Box, Text, Heading } from "@chakra-ui/layout";
+import { Box, Flex, Heading } from "@chakra-ui/layout";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchSurveys } from "../../redux/actions";
 import { useEffect, useCallback } from "react";
+import SurveyCard from "./SurveyCard";
 
 export default function SurveyList() {
   const dispatch = useDispatch();
@@ -12,27 +13,18 @@ export default function SurveyList() {
 
   const renderSurveys = useCallback(() => {
     return surveys.map((survey) => {
-      console.log(survey);
       return (
-        <Box key={survey._id}>
-          <Box>
-            <Text>{survey.title}</Text>
-            <Text>{survey.body}</Text>
-            <Text>{new Date(survey.dateSent).toLocaleDateString()}</Text>
-          </Box>
-          <Box>
-            <Text>Yes: {survey.yes}</Text>
-            <Text>No: {survey.no}</Text>
-          </Box>
+        <Box p={3}>
+          <SurveyCard survey={survey} />
         </Box>
       );
     });
   }, [surveys]);
 
   return (
-    <Box>
-      <Heading>Survey List</Heading>
-      {renderSurveys()}
+    <Box w="100vw">
+      <Heading size="md">Completed Surveys</Heading>
+      <Flex flexWrap={"wrap"}>{renderSurveys()}</Flex>
     </Box>
   );
 }

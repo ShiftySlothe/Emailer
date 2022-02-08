@@ -17,7 +17,7 @@ module.exports = (app) => {
   });
 
   // Returns a string when a user votes
-  app.get("/api/surveys/:surveyID/:choice", (req, res) => {
+  app.get("/api/survey/:surveyID/:choice", (req, res) => {
     res.send("Thanks for voting!");
   });
 
@@ -28,7 +28,6 @@ module.exports = (app) => {
     if (!title || !subject || !body || !recipients) {
       res.status(400).send({ error: "Survey details missing" });
     }
-
     const survey = new Survey({
       title,
       subject,
@@ -39,7 +38,7 @@ module.exports = (app) => {
     });
 
     const mailer = new Mailer(survey, surveyTemplate(survey));
-    // TODO - talk to Rob about error handling here
+
     try {
       await mailer.send();
     } catch (e) {
