@@ -11,7 +11,7 @@ function SurveyFormReview({ returnToSurvey, history }) {
     dispatch(submitSurvey(formValues, history));
   };
   return (
-    <Flex direction="column" alignItems="center">
+    <Flex minh="100vh" direction="column" alignItems="center">
       <Heading>Please review your submission.</Heading>
       {FIELDS.map(({ label, name }, index) => {
         return (

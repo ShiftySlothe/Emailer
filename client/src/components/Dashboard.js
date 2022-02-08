@@ -7,7 +7,7 @@ import SurveyList from "./surveys/SurveyList";
 
 export default function Dashboard() {
   return (
-    <Box height="100%" width="100vw" p={3}>
+    <Box minH="100vh" width="100vw" p={3}>
       <Heading size="xl">Dashboard</Heading>
       <SurveyList />
       <MenuButon />
