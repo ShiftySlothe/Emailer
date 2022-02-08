@@ -9,8 +9,18 @@ import {
   useColorModeValue,
   createIcon,
 } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import useAuthStatusOnPage from "../utils/useAuth";
 
 export default function Landing() {
+  const auth = useSelector((state) => state.auth);
+  const setLoginData = useAuthStatusOnPage(
+    auth,
+    null,
+    <a href="/api/logout">Logout</a>,
+    <a href="/auth/google">Login with Google</a>
+  );
   return (
     <>
       <Container maxW={"3xl"}>
@@ -49,11 +59,9 @@ export default function Landing() {
               _hover={{
                 bg: "green.500",
               }}
+              isLoading={!setLoginData}
             >
-              Get Started
-            </Button>
-            <Button variant={"link"} colorScheme={"blue"} size={"sm"}>
-              Learn more
+              {setLoginData ? <ToDashboard auth={auth} /> : setLoginData}
             </Button>
             <Box>
               <Icon
@@ -84,3 +92,11 @@ const Arrow = createIcon({
     />
   ),
 });
+
+function ToDashboard({ auth }) {
+  return (
+    <Link to={auth ? "/surveys" : "/"}>
+      <Text>To dashboard!</Text>
+    </Link>
+  );
+}
