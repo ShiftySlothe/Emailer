@@ -4,14 +4,11 @@ import { Box } from "@chakra-ui/react";
 import { fetchUser } from "../redux/actions";
 import { useDispatch } from "react-redux";
 
-import Header from "./Header";
+import Header from "./HeaderNew";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
 import SurveyNew from "./surveys/SurveyNew";
-
-function Footer() {
-  return <h2>Footer</h2>;
-}
+import Footer from "./Footer";
 
 function App() {
   const dispatch = useDispatch();

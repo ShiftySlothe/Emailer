@@ -7,7 +7,14 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import {
+  FaGithub,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
+import { githubURL, linkedInURL } from "../utils/urls";
 
 const SocialButton = ({ children, label, href }) => {
   return (
@@ -48,16 +55,13 @@ export default function Footer() {
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
       >
-        <Text>© 2020 Chakra Templates. All rights reserved</Text>
+        <Text>© 2022 Charles Forson. All rights reserved</Text>
         <Stack direction={"row"} spacing={6}>
-          <SocialButton label={"Twitter"} href={"#"}>
-            <FaTwitter />
+          <SocialButton label={"Github"} href={githubURL}>
+            <FaGithub />
           </SocialButton>
-          <SocialButton label={"YouTube"} href={"#"}>
-            <FaYoutube />
-          </SocialButton>
-          <SocialButton label={"Instagram"} href={"#"}>
-            <FaInstagram />
+          <SocialButton label={"LinkedIn"} href={linkedInURL}>
+            <FaLinkedin />
           </SocialButton>
         </Stack>
       </Container>

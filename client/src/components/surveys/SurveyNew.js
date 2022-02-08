@@ -4,7 +4,7 @@ import { Box, Center, Heading } from "@chakra-ui/layout";
 import { useState } from "react";
 import { reduxForm } from "redux-form";
 
-function SurveyNew() {
+export function SurveyNew() {
   const [showFormReview, setShowFormReview] = useState(false);
   return (
     <Box>
